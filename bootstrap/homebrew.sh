@@ -34,6 +34,7 @@ brew cask install 'slack'
 brew cask install 'sequel-pro'
 brew cask install 'dynalist'
 brew cask install 'visual-studio-code'
+brew cask install 'divvy'
 
 # Mac App Store
 mas install 1333542190 # 1Password
