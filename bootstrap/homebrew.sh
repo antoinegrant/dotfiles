@@ -33,6 +33,11 @@ brew cask install 'alfred'
 brew cask install 'slack'
 brew cask install 'sequel-pro'
 brew cask install 'dynalist'
+brew cask install 'visual-studio-code'
+
+# Mac App Store
+mas install 1333542190 # 1Password
+mas install 1147396723 # WhatsApp
 
 # Upgrade any already-installed formulae.
 brew upgrade
