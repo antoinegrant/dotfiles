@@ -25,6 +25,8 @@ brew install 'mackup'
 brew install 'tree'
 brew install 'mas' # Mac App Store manager
 brew install 'gnupg'
+brew install 'ag'
+brew install 'diff-so-fancy'
 
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 

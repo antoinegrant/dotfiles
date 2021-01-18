@@ -1,0 +1,98 @@
+[user]
+  name = Antoine Grant
+  email = antoine.grant@shopify.com
+[alias]
+  aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\:\\ /
+  amend = commit --amend
+  autotrack = "!f() { B=$(git current-branch); git branch --set-upstream-to=origin/$B; }; f"
+  axe = log --reverse -p -w -S
+  back = checkout "-"
+  boop = "!f() { B=$(git current-branch); git commit --allow-empty -m 'Boop!'; git push origin $B; }; f"
+  branches = "!git branch | ag -v '(staging|master)'"
+  contributors = shortlog -s -n --no-merges
+  copy-last-hash = !git last | pbcopy
+  current-branch = rev-parse --abbrev-ref HEAD
+  delete-branch = branch -D
+  discard = checkout --
+  file-trail = log --follow -p -w
+  fold = commit --amend --no-edit
+  graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
+  history = log -10 --format=format:'%Cgreen%h %Creset%s (%aN, %ar)'
+  into = "!f() { B=$(git current-branch); git checkout $1; git pull; git merge $B --no-edit; }; f"
+  into-master = "!f() { B=$(git current-branch); git checkout master; git pull; git merge $B --no-edit; }; f"
+  into-staging = "!f() { B=$(git current-branch); git checkout staging; git pull; git merge $B --no-edit; }; f"
+  invert = revert
+  last = log -1 HEAD --format=format:"%Cred%H"
+  merge-trail = log --ancestry-path --merges
+  move = mv
+  nevermind = !git reset --hard HEAD && git clean -d -f
+  new-branch = checkout -b
+  onto = "!f() { B=$(git current-branch); git checkout master; git pull; git checkout $B; git rebase -i $1; }; f"
+  patch = add --patch
+  precommit = diff -w --cached
+  prestage = diff -w
+  recent-branches = branch -a --sort=committerdate
+  remotes = remote -v
+  remove = rm
+  rename-branch = branch -m
+  resave = commit --amend -m
+  rewrite = rebase -i
+  save = commit -m
+  show-last = show HEAD
+  stashes = stash list
+  submit = !git push && git autotrack
+  summary = status -u -s
+  s = summary
+  tags = tag
+  tuck = stash save -u
+  uncommit = reset --mixed HEAD~
+  unmerged = branch --no-merged
+  unmerged-files = diff --name-only
+  unstage = reset -q HEAD --
+  unstash = stash pop
+  untrack = rm -r --cached
+  untuck = stash pop "stash@{0}"
+  what = show
+  whodunit = blame -wMC
+  work-log = !git log --reverse master...HEAD --format=format:'- %w(0,0,4)%B'
+[advice]
+  statusHints = false
+[diff]
+  tool = vscode
+  compactionHeuristic = true
+  indentHeuristic = true
+  algorithm = patience
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[interactive]
+  diffFilter = diff-so-fancy
+[pager]
+  diff = diff-so-fancy | less
+  log = diff-so-fancy | less
+  show = diff-so-fancy | less
+[blame]
+  date = relative
+[push]
+  default = current
+[core]
+  editor = nvim
+  precomposeunicode = true
+  excludesfile = ~/.gitignore_global
+  untrackedCache = true
+  commentchar = ";"
+[credential]
+  helper = osxkeychain
+[merge]
+  tool = vscode
+  conflictstyle = diff3
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+[merge "ours"]
+  driver = true
+[commit]
+  verbose = true
+[url "https://github.com/Shopify/"]
+	insteadOf = git@github.com:Shopify/
+	insteadOf = git@github.com:shopify/
+	insteadOf = ssh://git@github.com/Shopify/
+	insteadOf = ssh://git@github.com/shopify/
